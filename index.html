@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1b2533">
+  <meta name="description" content="LeadPredictor campaign dashboard visual prototype.">
+  <title>LeadPredictor — Campaign Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10H3z"/><path d="M6 11h12" fill="none" stroke="#85909f" stroke-width="2"/></symbol>
+    <symbol id="person" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3z"/></symbol>
+    <symbol id="trophy" viewBox="0 0 24 24"><path d="M7 3h10v6c0 4-2 6-4 7v3h5v3H6v-3h5v-3c-2-1-4-3-4-7z"/><path d="M7 5H3v3c0 3 2 5 5 5M17 5h4v3c0 3-2 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  </svg>
+  <main class="dashboard">
+    <aside class="sidebar" aria-label="Campaign settings">
+      <h1 class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#b9c4d3"/><path d="M5 7h22L18 19v7l-5 3V19z" fill="#526174"/></svg><span><strong>Lead</strong>Predictor</span></h1>
+      <form class="settings panel" onsubmit="return false">
+        <div class="field"><label for="language">Language</label><div class="select-wrap language"><span class="flag" aria-hidden="true">🇺🇸</span><select id="language" name="language"><option>English</option></select></div></div>
+        <div class="field"><label for="currency">Currency</label><div class="select-wrap"><select id="currency" name="currency"><option>$ US Dollar</option></select></div></div>
+        <div class="field"><label for="campaign-start">Campaign Start</label><input id="campaign-start" name="campaign-start" type="date" value="2026-05-08"></div>
+        <div class="field"><label for="campaign-end">Campaign End</label><input id="campaign-end" name="campaign-end" type="date" value="2026-11-04"></div>
+        <div class="field"><label for="revenue">Total Revenue</label><div class="money-input"><span aria-hidden="true">$</span><input id="revenue" name="revenue" type="number" value="10000" min="0"></div></div>
+        <div class="field"><label for="order-value">Avg. Order Value</label><div class="money-input"><span aria-hidden="true">$</span><input id="order-value" name="order-value" type="number" value="1000" min="0"></div></div>
+      </form>
+    </aside>
+    <div class="workspace">
+      <section class="overview panel" aria-label="Campaign overview">
+        <div class="chart-wrap">
+          <svg class="chart" viewBox="0 0 480 350" role="img" aria-labelledby="chart-title chart-description">
+            <title id="chart-title">Campaign growth by month</title>
+            <desc id="chart-description">Six horizontal bars show prospects growing from 21 to 125, leads from 4 to 25, and customers from 2 to 10. Month three: 63 prospects, 13 leads, and 5 customers.</desc>
+            <g class="grid"><path d="M35 15V310M101 15V310M167 15V310M233 15V310M299 15V310M365 15V310M431 15V310"/><path d="M35 43H448M35 92H448M35 141H448M35 190H448M35 239H448M35 288H448"/></g>
+            <g class="prospect-bars"><path d="M35 20h69v44H35zM35 69h138v44H35zM35 118h207v44H35zM35 167h276v44H35zM35 216h345v44H35zM35 265h414v44H35z"/></g>
+            <g class="lead-bars"><path d="M35 24h14v36H35zM35 73h28v36H35zM35 122h42v36H35zM35 171h55v36H35zM35 220h69v36H35zM35 269h83v36H35z"/></g>
+            <g class="customer-bars"><path d="M35 24h6v36H35zM35 73h13v36H35zM35 122h16v36H35zM35 171h22v36H35zM35 220h27v36H35zM35 269h33v36H35z"/></g>
+            <path class="axis" d="M35 15V310H450"/>
+            <g class="month-labels"><text x="29" y="46">1</text><text x="29" y="95">2</text><text x="29" y="144">3</text><text x="29" y="193">4</text><text x="29" y="242">5</text><text x="29" y="291">6</text></g>
+            <text class="axis-title" transform="translate(14 179) rotate(-90)">Month</text>
+            <g class="people-labels"><text x="35" y="327">0 people</text><text x="101" y="327">20 people</text><text x="167" y="327">40 people</text><text x="233" y="327">60 people</text><text x="299" y="327">80 people</text><text x="365" y="327">100 people</text><text x="431" y="327">120 people</text></g>
+            <g class="chart-tooltip"><rect x="143" y="112" width="74" height="59" rx="2"/><text x="149" y="127"><tspan x="149">Month #3</tspan><tspan x="149" dy="11">Prospects: 63</tspan><tspan x="149" dy="11">Leads: 13</tspan><tspan x="149" dy="11">Customers: 5</tspan></text></g>
+          </svg>
+        </div>
+        <div class="metrics">
+          <article class="metric prospects"><div class="metric-heading"><span class="metric-title"><svg aria-hidden="true"><use href="#folder"/></svg>Prospects</span><span class="percentage">100%</span></div><p class="metric-value">125</p><div class="meter" role="meter" aria-label="Prospects" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span style="width:100%"></span></div></article>
+          <article class="metric leads"><div class="metric-heading"><span class="metric-title"><svg aria-hidden="true"><use href="#person"/></svg>Leads</span><span class="percentage">20%</span></div><p class="metric-value">25</p><div class="meter" role="meter" aria-label="Leads" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20"><span style="width:20%"></span></div></article>
+          <article class="metric customers"><div class="metric-heading"><span class="metric-title"><svg aria-hidden="true"><use href="#trophy"/></svg>Customers</span><span class="percentage">8%</span></div><p class="metric-value">10</p><div class="meter" role="meter" aria-label="Customers" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8"><span style="width:8%"></span></div></article>
+        </div>
+      </section>
+      <section class="response-panel panel" aria-label="Response rates">
+        <div class="response"><label for="lead-response">Lead Response Rate</label><input id="lead-response" type="range" min="0" max="100" value="40" style="--fill:40%" aria-describedby="lead-response-value"><output id="lead-response-value" for="lead-response">40.00%</output></div>
+        <div class="response"><label for="prospect-response">Prospect Response Rate</label><input id="prospect-response" type="range" min="0" max="100" value="20" style="--fill:20%" aria-describedby="prospect-response-value"><output id="prospect-response-value" for="prospect-response">20.00%</output></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
