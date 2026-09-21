@@ -132,5 +132,5 @@ Interaction tests use **jsdom**, which tests DOM behaviour without a graphical b
 
 The **Dashboard checks** GitHub Actions workflow runs on pushes and pull requests. Check its result before merging changes.
 
-## Project structure
+
 
