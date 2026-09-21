@@ -16,10 +16,7 @@ console.log('HTML and CSS checks passed.');
 
 http.createServer((request, response) => {
   const pathname = new URL(request.url, 'http://localhost').pathname;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  const files = { '/': ['text/html', html], '/index.html': ['text/html', html], '/styles.css': ['text/css', css] };
-=======
+
   const files = {
     '/': ['text/html', 'index.html'],
     '/index.html': ['text/html', 'index.html'],
@@ -30,10 +27,9 @@ http.createServer((request, response) => {
     '/calculations.js': ['text/javascript', 'calculations.js'],
     '/dashboard.js': ['text/javascript', 'dashboard.js'],
   };
->>>>>>> Stashed changes
-=======
-  const files = { '/': ['text/html', 'index.html'], '/index.html': ['text/html', 'index.html'], '/styles.css': ['text/css', 'styles.css'], '/script.js': ['text/javascript', 'script.js'] };
->>>>>>> Stashed changes
+
+  };
+
   const file = files[pathname];
   if (!file) { response.writeHead(404); response.end('Not found'); return; }
   response.writeHead(200, { 'Content-Type': `${file[0]}; charset=utf-8`, 'Cache-Control': 'no-store' });

@@ -7,21 +7,15 @@
   <meta name="description" content="LeadPredictor campaign dashboard visual prototype.">
   <title>LeadPredictor — Campaign Dashboard</title>
   <link rel="stylesheet" href="styles.css">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
   <script src="script.js" defer></script>
   <script src="sidebar.js" defer></script>
   <script src="response-rates.js" defer></script>
+
   <script src="calculations.js" defer></script>
   <script src="dashboard.js" defer></script>
 
 
->>>>>>> Stashed changes
-=======
-  <script src="script.js" defer></script>
->>>>>>> Stashed changes
 </head>
 <body>
   <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -32,7 +26,7 @@
   <main class="dashboard">
     <aside class="sidebar" aria-label="Campaign settings">
       <h1 class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#b9c4d3"/><path d="M5 7h22L18 19v7l-5 3V19z" fill="#526174"/></svg><span><strong>Lead</strong>Predictor</span></h1>
-      <form class="settings panel" onsubmit="return false">
+      <form class="settings panel" novalidate>
         <div class="field"><label for="language">Language</label><div class="select-wrap language"><span class="flag" aria-hidden="true">🇺🇸</span><select id="language" name="language"><option>English</option></select></div></div>
         <div class="field"><label for="currency">Currency</label><div class="select-wrap"><select id="currency" name="currency"><option>$ US Dollar</option></select></div></div>
         <div class="field"><label for="campaign-start">Campaign Start</label><input id="campaign-start" name="campaign-start" type="date" value="2026-05-08"></div>
