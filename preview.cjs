@@ -16,6 +16,7 @@ console.log('HTML and CSS checks passed.');
 
 http.createServer((request, response) => {
   const pathname = new URL(request.url, 'http://localhost').pathname;
+
   const files = {
     '/': ['text/html', 'index.html'],
     '/index.html': ['text/html', 'index.html'],
@@ -23,7 +24,12 @@ http.createServer((request, response) => {
     '/script.js': ['text/javascript', 'script.js'],
     '/sidebar.js': ['text/javascript', 'sidebar.js'],
     '/response-rates.js': ['text/javascript', 'response-rates.js'],
+    '/calculations.js': ['text/javascript', 'calculations.js'],
+    '/dashboard.js': ['text/javascript', 'dashboard.js'],
   };
+
+  };
+
   const file = files[pathname];
   if (!file) { response.writeHead(404); response.end('Not found'); return; }
   response.writeHead(200, { 'Content-Type': `${file[0]}; charset=utf-8`, 'Cache-Control': 'no-store' });
