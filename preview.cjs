@@ -28,8 +28,6 @@ http.createServer((request, response) => {
     '/dashboard.js': ['text/javascript', 'dashboard.js'],
   };
 
-  };
-
   const file = files[pathname];
   if (!file) { response.writeHead(404); response.end('Not found'); return; }
   response.writeHead(200, { 'Content-Type': `${file[0]}; charset=utf-8`, 'Cache-Control': 'no-store' });

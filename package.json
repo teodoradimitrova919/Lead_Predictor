@@ -1,0 +1,11 @@
+{
+  "name": "lead-predictor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node preview.cjs",
+    "test": "node --test calculations.test.cjs dashboard.test.cjs source.test.cjs"
+  },
+  "devDependencies": { "jsdom": "30.1.0" },
+  "engines": { "node": ">=24" }
+}
