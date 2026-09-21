@@ -1,7 +1,11 @@
 'use strict';
 
+<<<<<<< Updated upstream
 // Main chart only: sample data, bars, and interactive tooltips.
 // Sidebar controls, summary cards, and sliders will be connected later.
+=======
+// Step 1: main chart only. Other page controls will be connected later.
+>>>>>>> Stashed changes
 const monthlyData = [
   { month: 1, prospects: 21, leads: 4, customers: 2 },
   { month: 2, prospects: 42, leads: 8, customers: 4 },
@@ -13,16 +17,26 @@ const monthlyData = [
 
 function createSvgElement(tag, attributes = {}, text) {
   const element = document.createElementNS('http://www.w3.org/2000/svg', tag);
+<<<<<<< Updated upstream
   for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, value);
+=======
+  for (const [name, value] of Object.entries(attributes)) {
+    element.setAttribute(name, value);
+  }
+>>>>>>> Stashed changes
   if (text !== undefined) element.textContent = text;
   return element;
 }
 
+<<<<<<< Updated upstream
 function renderMonthlyChart(data = monthlyData, language = 'en') {
   const monthlyData = data;
   const bg = language === 'bg';
   const words = bg ? ['Месец', 'Контакти', 'Потенциални клиенти', 'Клиенти', 'души'] : ['Month', 'Prospects', 'Leads', 'Customers', 'people'];
   const format = new Intl.NumberFormat(bg ? 'bg-BG' : 'en-US');
+=======
+function renderMonthlyChart() {
+>>>>>>> Stashed changes
   const chart = document.querySelector('.chart');
   if (!chart) return;
 
@@ -31,6 +45,7 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
   const width = 414;
   const rowHeight = 49;
   const bottom = top + monthlyData.length * rowHeight;
+<<<<<<< Updated upstream
   const maxPeople = Math.max(1, ...monthlyData.map(item => item.prospects));
   chart.setAttribute('viewBox', `0 0 480 ${Math.max(350, bottom + 41)}`);
   const scale = count => count / maxPeople * width;
@@ -39,15 +54,31 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
     createSvgElement('title', { id: 'chart-title' }, bg ? 'Натрупани цели по месеци' : 'Cumulative campaign targets by month'),
     createSvgElement('desc', { id: 'chart-description' },
       monthlyData.map(row => `${words[0]} ${row.month}: ${words[1]} ${format.format(row.prospects)}, ${words[2]} ${format.format(row.leads)}, ${words[3]} ${format.format(row.customers)}`).join('; ')),
+=======
+  const maxPeople = Math.max(...monthlyData.map(item => item.prospects));
+  const scale = count => count / maxPeople * width;
+
+  chart.replaceChildren(
+    createSvgElement('title', { id: 'chart-title' }, 'Campaign growth by month'),
+    createSvgElement('desc', { id: 'chart-description' },
+      'Sample cumulative targets for six months. Hover, tap, or focus a row to see its prospects, leads, and customers.'),
+>>>>>>> Stashed changes
   );
 
   const grid = createSvgElement('g', { class: 'grid' });
   const labels = createSvgElement('g', { class: 'people-labels' });
+<<<<<<< Updated upstream
   const tickStep = Math.max(1, Math.ceil(maxPeople / 6));
   for (let people = 0; people <= maxPeople; people += tickStep) {
     const x = left + scale(people);
     grid.append(createSvgElement('path', { d: `M${x} ${top}V${bottom}` }));
     labels.append(createSvgElement('text', { x, y: bottom + 18 }, new Intl.NumberFormat(language, { notation: 'compact', maximumFractionDigits: 1 }).format(people)));
+=======
+  for (let people = 0; people <= maxPeople; people += 20) {
+    const x = left + scale(people);
+    grid.append(createSvgElement('path', { d: `M${x} ${top}V${bottom}` }));
+    labels.append(createSvgElement('text', { x, y: bottom + 18 }, `${people} people`));
+>>>>>>> Stashed changes
   }
   monthlyData.forEach((item, index) => {
     const y = top + index * rowHeight + rowHeight / 2;
@@ -55,8 +86,12 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
   });
   chart.append(grid, labels,
     createSvgElement('path', { class: 'axis', d: `M${left} ${top}V${bottom}H${left + width}` }),
+<<<<<<< Updated upstream
     createSvgElement('text', { class: 'axis-title', transform: `translate(14 ${(top + bottom) / 2}) rotate(-90)` }, words[0]),
     createSvgElement('text', { class: 'people-labels', x: 242, y: bottom + 32 }, words[4]),
+=======
+    createSvgElement('text', { class: 'axis-title', transform: 'translate(14 179) rotate(-90)' }, 'Month'),
+>>>>>>> Stashed changes
   );
 
   const tooltip = createSvgElement('g', {
@@ -66,12 +101,20 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
 
   monthlyData.forEach((item, index) => {
     const y = top + index * rowHeight;
+<<<<<<< Updated upstream
     const details = [`${words[0]} #${item.month}`, `${words[1]}: ${format.format(item.prospects)}`, `${words[2]}: ${format.format(item.leads)}`, `${words[3]}: ${format.format(item.customers)}`];
+=======
+    const details = [`Month #${item.month}`, `Prospects: ${item.prospects}`, `Leads: ${item.leads}`, `Customers: ${item.customers}`];
+>>>>>>> Stashed changes
     const row = createSvgElement('g', {
       class: 'chart-row', tabindex: '0', role: 'img', 'aria-label': details.join(', '),
     });
 
+<<<<<<< Updated upstream
     // Smaller series overlay prospects, matching the reference image.
+=======
+    // Draw smaller series over prospects, matching the reference chart.
+>>>>>>> Stashed changes
     for (const [key, className, inset] of [
       ['prospects', 'prospect-bars', 3],
       ['leads', 'lead-bars', 7],
@@ -83,12 +126,20 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
       }));
     }
     row.append(createSvgElement('text', { class: 'month-labels', x: left - 6, y: y + 27 }, item.month));
+<<<<<<< Updated upstream
+=======
+    // Include the empty part of each row in the hover/touch target.
+>>>>>>> Stashed changes
     row.append(createSvgElement('rect', {
       class: 'chart-hit-area', x: left, y, width, height: rowHeight, fill: 'transparent',
     }));
 
     function showTooltip() {
+<<<<<<< Updated upstream
       const tooltipWidth = Math.max(85, ...details.map(line => line.length * 6 + 12));
+=======
+      const tooltipWidth = 85;
+>>>>>>> Stashed changes
       const tooltipHeight = 59;
       const x = Math.min(left + width - tooltipWidth, left + scale(item.prospects) / 2);
       const tooltipY = Math.min(bottom - tooltipHeight, y);
@@ -111,7 +162,11 @@ function renderMonthlyChart(data = monthlyData, language = 'en') {
     });
     chart.append(row);
   });
+<<<<<<< Updated upstream
   // Keep the tooltip above all bars.
+=======
+  // Append last to keep the tooltip above every bar.
+>>>>>>> Stashed changes
   chart.append(tooltip);
 }
 
